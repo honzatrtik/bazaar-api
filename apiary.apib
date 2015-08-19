@@ -1,0 +1,129 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Bazaar API
+
+# GET /items{?limit,filterPrice,filterPlace,filterRadius}
++ Parameters
+    + limit (integer,optional)
+        + default: `30`
+    + start (string, optional) - TODO
+    + filterPrice: `1000-2500` (string,optional) - Price range from predefined set.
+    + filterPlace: `50.075,14.437` (string,optional) - GPS coordinates
+    + filterRadius: `1-5km` (string,optional) - Radius range from predefined set. Makes sense only if *filterPlace* param is set. 
+    
++ Response 200 (application/json)
+
+        [
+          {
+            "id": 1,
+            "slug": "fender-telecaster-mexiko",
+            "name": "Fender Telecaster Mexico",
+            "imageUrl": "http://lorempixel.com/300/200",
+            "district": "Olomoucký kraj",
+            "price": 13000,
+            "description": "",
+            "created": "2013-12-12 12:45:30",
+            "url": "/ads/1"
+          },
+          {
+            "id": 2,
+            "slug": "fender-telecaster-mexiko",
+            "name": "Fender Precision Bass",
+            "imageUrl": "http://lorempixel.com/300/200",
+            "district": "Královehradecký kraj",
+            "price": 20000,
+            "description": "",
+            "created": "2013-12-12 12:45:30",
+            "url": "/ads/2"
+          },
+          {
+            "id": 3,
+            "slug": "fender-telecaster-mexiko",
+            "name": "Fender Telecaster Mexico",
+            "imageUrl": "http://lorempixel.com/300/200",
+            "district": "Olomoucký kraj",
+            "price": 13000,
+            "description": "",
+            "created": "2013-12-12 12:45:30",
+            "url": "/ads/1"
+          },
+          {
+            "id": 4,
+            "slug": "fender-telecaster-mexiko",
+            "name": "Fender Precision Bass",
+            "imageUrl": "http://lorempixel.com/300/200",
+            "district": "Královehradecký kraj",
+            "price": 20000,
+            "description": "",
+            "created": "2013-12-12 12:45:30",
+            "url": "/ads/2"
+          },
+          {
+            "id": 5,
+            "slug": "fender-telecaster-mexiko",
+            "name": "Fender Telecaster Mexico",
+            "imageUrl": "http://lorempixel.com/300/200",
+            "district": "Olomoucký kraj",
+            "price": 13000,
+            "description": "",
+            "created": "2013-12-12 12:45:30",
+            "url": "/ads/1"
+          },
+          {
+            "id": 6,
+            "slug": "fender-telecaster-mexiko",
+            "name": "Fender Precision Bass",
+            "imageUrl": "http://lorempixel.com/300/200",
+            "district": "Královehradecký kraj",
+            "price": 20000,
+            "description": "",
+            "created": "2013-12-12 12:45:30",
+            "url": "/ads/2"
+          },
+          {
+            "id": 7,
+            "slug": "fender-telecaster-mexiko",
+            "name": "Fender Telecaster Mexico",
+            "imageUrl": "http://lorempixel.com/300/200",
+            "district": "Olomoucký kraj",
+            "price": 13000,
+            "description": "",
+            "created": "2013-12-12 12:45:30",
+            "url": "/ads/1"
+          },
+          {
+            "id": 8,
+            "slug": "fender-telecaster-mexiko",
+            "name": "Fender Precision Bass",
+            "imageUrl": "http://lorempixel.com/300/200",
+            "district": "Královehradecký kraj",
+            "price": 20000,
+            "description": "",
+            "created": "2013-12-12 12:45:30",
+            "url": "/ads/2"
+          },
+          {
+            "id": 9,
+            "slug": "fender-telecaster-mexiko",
+            "name": "Fender Telecaster Mexico",
+            "imageUrl": "http://lorempixel.com/300/200",
+            "district": "Olomoucký kraj",
+            "price": 13000,
+            "description": "",
+            "created": "2013-12-12 12:45:30",
+            "url": "/ads/1"
+          },
+          {
+            "id": 10,
+            "slug": "fender-telecaster-mexiko",
+            "name": "Fender Precision Bass",
+            "imageUrl": "http://lorempixel.com/300/200",
+            "district": "Královehradecký kraj",
+            "price": 20000,
+            "description": "",
+            "created": "2013-12-12 12:45:30",
+            "url": "/ads/2"
+          }
+        ]
+              
