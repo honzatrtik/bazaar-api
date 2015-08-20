@@ -1,0 +1,23 @@
+{
+  "name": "bazaar-api",
+  "version": "0.1.0",
+  "description": "Bazaar API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "node_modules/.bin/aglio -i apiary.apib -o doc/doc.html && opener doc/doc.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/honzatrtik/bazaar-api.git"
+  },
+  "author": "honza.trtik@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/honzatrtik/bazaar-api/issues"
+  },
+  "homepage": "https://github.com/honzatrtik/bazaar-api",
+  "dependencies": {
+    "opener": "^1.4.1"
+  }
+}
