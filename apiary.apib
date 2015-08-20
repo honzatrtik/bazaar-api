@@ -3,18 +3,59 @@ HOST: http://polls.apiblueprint.org/
 
 # Bazaar API
 
+## TODOS
++ filter list API endpoints
++ filter facet API endpoint
++ upload API endpoints
++ authentication
++ API versioning
++ paging - use timestamp or sequence param?
++ describe request / response attributes
++ user id or slug for user owned resources?
+
+
 # Group Items
 
-# Items /items{?start,limit,filterPrice,filterPlace,filterRadius}
+# Items [/items]
+
++ Model (application/json)
+
+    + Body
+    
+            {
+                "id": 10,
+                "slug": "fender-telecaster-mexiko",
+                "name": "Fender Precision Bass",
+                "images": [
+                    {
+                        "full": "http://lorempixel.com/1600/1200/",
+                        "thumb": "http://lorempixel.com/300/200/"
+                    },
+                    {
+                        "full": "http://lorempixel.com/1600/1200/",
+                        "thumb": "http://lorempixel.com/300/200/"
+                    }
+                ],
+                "district": "Královehradecký kraj",
+                "price": 20000,
+                "description": "",
+                "personalPickupOnly": true,
+                "created": "2013-12-12 12:45:30",
+                "url": "/items/10"
+            }
+
+
+## List items [GET /items{?start,limit,filterCategory,filterPrice,filterPlace,filterRadius}]
+
 + Parameters
+    + start (string, optional) - _TODO_ timestamp or sequence based - we will use it for paging.
     + limit (integer,optional)
         + default: `30`
-    + start (string, optional) - TODO
+    + filterCategory: `kytary/elektricke-kytary` (string,optional)
     + filterPrice: `1000-2500` (string,optional) - Price range from predefined set.
     + filterPlace: `50.075,14.437` (string,optional) - GPS coordinates
     + filterRadius: `1-5km` (string,optional) - Radius range from predefined set. Makes sense only if *filterPlace* param is set. 
 
-## List items [GET]
 + Response 200 (application/json)
 
         [
@@ -189,7 +230,7 @@ HOST: http://polls.apiblueprint.org/
                 },
                 {
                     "full": "http://lorempixel.com/1600/1200/",
-                    "thumb": "http://lorempixel.com/300/200/"
+                    "thumb": "http://lorempixdel.com/300/200/"
                 }
             ],
             "district": "Olomoucký kraj",
@@ -219,4 +260,107 @@ HOST: http://polls.apiblueprint.org/
             "url": "/items/10"
           }
         ]
+        
+## Get specific item [GET /items/{id}]
+
++ Parameters
+    + id: `2` (integer)
+    
++ Response 200
+    
+    [Items][]
+
+
+## Create item [POST /items]
+  
+ 
++ Request (application/json)
+        
+        {
+            "name": "Fender Precision Bass",
+            "images": [],
+            "district": "Královehradecký kraj",
+            "price": 20000,
+            "description": "",
+            "personalPickupOnly": true
+          }
++ Response 201
+    
+    [Items][]
+
+
+## Update item [PUT /items/{id}]
+
++ Parameters
+    + id: `2` (integer)
               
++ Response 204
+
+## Delete item [DELETE /items/{id}]
+
++ Parameters
+    + id: `2` (integer)
+              
++ Response 204
+
+
+
+# Group User
+
+# Watchdogs [/user/{userId}/watchdogs]
+
+## List users watchdogs [GET]
+
++ Parameters
+    + userId: `2` (integer)
+              
++ Response 200 (application/json)
+
+        [
+            {
+                "hash": "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
+                "url": "/user/2/watchdogs/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3"
+                "query": "marshall",
+                "filterCategory": "kytary/elektricke-kytary",
+                "filterPrice": "10000-25000",
+            },
+            {
+                "hash": "b94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
+                "url": "/user/2/watchdogs/b94a8fe5ccb19ba61c4c0873d391e987982fbbd3"
+                "query": "tubescreamer",
+                "filterCategory": "kytary/kytarove-efekty",
+                "filterPrice": "1000-5000",
+            }
+        ]
+
+
+## Create new watchdog [POST /user/{userId}/watchdogs]
+
++ Parameters
+    + userId: `2` (integer)
+
++ Request
+
+        {
+            "query": "marshall",
+            "filterCategory": "kytary/elektricke-kytary",
+            "filterPrice": "1000-5000",
+        }
+        
++ Response 201 (application/json)
+        
+        {
+            "hash": "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
+            "url": "/user/2/watchdogs/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3"
+            "query": "marshall",
+            "filterCategory": "kytary/elektricke-kytary",
+            "filterPrice": "1000-5000",
+        }
+
+## Delete watchdog [DELETE /user/{userId}/watchdogs/{hash}]
++ Parameters
+    + userId: `2` (integer)
+    + hash: `a94a8fe5ccb19ba61c4c0873d391e987982fbbd3` (string)
+
++ Response 204
+
