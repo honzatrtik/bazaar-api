@@ -9,7 +9,7 @@ HOST: http://polls.apiblueprint.org/
 + upload API endpoints
 + authentication
 + API versioning
-+ paging - use timestamp or sequence param?
++ paging - use timestamp or sequence param, [next & prev links](http://www.rfc-editor.org/rfc/rfc5988.txt) via Link headers?
 + describe request / response attributes
 + user id or slug for user owned resources?
 
@@ -18,12 +18,15 @@ HOST: http://polls.apiblueprint.org/
 
 # Items [/items]
 
+[Status flow](https://www.gliffy.com/go/publish/8739555) of item.
+
 + Model (application/json)
 
     + Body
     
             {
                 "id": 10,
+                "status": "active",
                 "slug": "fender-telecaster-mexiko",
                 "name": "Fender Precision Bass",
                 "images": [
@@ -46,6 +49,8 @@ HOST: http://polls.apiblueprint.org/
 
 
 ## List items [GET /items{?start,limit,filterCategory,filterPrice,filterPlace,filterRadius}]
+
+Only *active* items are listed.
 
 + Parameters
     + start (string, optional) - _TODO_ timestamp or sequence based - we will use it for paging.
@@ -278,7 +283,7 @@ HOST: http://polls.apiblueprint.org/
         
         {
             "name": "Fender Precision Bass",
-            "images": [],
+            "images": ["252bafe554121d4f7a391234ceda001fd64c69bd"],
             "district": "Královehradecký kraj",
             "price": 20000,
             "description": "",
@@ -304,6 +309,18 @@ HOST: http://polls.apiblueprint.org/
 + Response 204
 
 
+# Upload [/uploads]
+
+## Upload image [POST /uploads/images]
+
++ Response 201 (application/json)
+
+        {
+            "id": "252bafe554121d4f7a391234ceda001fd64c69bd",
+            "url": "/uploads/images/252bafe554121d4f7a391234ceda001fd64c69bd"
+        }
+        
+        
 
 # Group User
 
@@ -335,6 +352,8 @@ HOST: http://polls.apiblueprint.org/
 
 
 ## Create new watchdog [POST /user/{userId}/watchdogs]
+
+Hash of filter key / values is automaticaly created (same filter setting results in same hash).
 
 + Parameters
     + userId: `2` (integer)
