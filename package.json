@@ -19,7 +19,11 @@
     "url": "https://github.com/honzatrtik/bazaar-api/issues"
   },
   "homepage": "https://github.com/honzatrtik/bazaar-api",
+  "engines": {
+    "npm": ">=1.1.2"
+  },
   "dependencies": {
+    "aglio": "^2.0.4",
     "dredd": "^1.0.0",
     "express": "^4.13.3",
     "opener": "^1.4.1"
