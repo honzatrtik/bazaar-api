@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doc": "node_modules/.bin/aglio -i apiary.apib -o doc/doc.html",
+    "doc": "./node_modules/.bin/aglio -i apiary.apib -o ./doc/doc.html",
     "start": "node index.js",
     "prestart": "npm run-script doc"
   },
